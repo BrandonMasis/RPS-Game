@@ -1,26 +1,35 @@
 const gameResults = document.querySelector('#results');
 const elementBtns = document.querySelectorAll('.element');
 const gameScores = document.querySelector('#scores');
+const gameChoices = document.querySelector('#choices');
 
 let availableChoices = ['rock', 'paper', 'scissors'];
 
-// When you click a button, it reads what element you choose, and decidesWInner(a,b)
-
-function getUserChoice() {
-  let userChoice = prompt(
-    'Pick your element: 1 (rock) 2 (paper) 3 (scissors)'
-  ).toLowerCase();
-
-  if ((userChoice == '1') | (userChoice == '2') | (userChoice == '3')) {
-    return availableChoices[parseInt(userChoice) - 1];
-  } else {
-    getUserChoice();
-  }
+function elementClick(event) {
+  let userChoice = event.target.getAttribute('data-element');
+  playRound(userChoice);
 }
+
+elementBtns.forEach((btn) => {
+  btn.addEventListener('click', elementClick);
+});
 
 function getComputerChoice() {
   let randomNumber = Math.floor(Math.random() * availableChoices.length);
   return availableChoices[randomNumber];
+}
+
+function getChoiceEmoji(choice) {
+  switch (choice) {
+    case 'rock':
+      return '🪨';
+    case 'paper':
+      return '📄';
+    case 'scissors':
+      return '✂️';
+    default:
+      return '';
+  }
 }
 
 function decideWinner(a, b) {
@@ -43,40 +52,14 @@ function decideWinner(a, b) {
   return winner;
 }
 
-function startRound() {
-  let userChoice = getUserChoice();
+function playRound(userChoice) {
   let computerChoice = getComputerChoice();
   let winner = decideWinner(userChoice, computerChoice);
 
-  console.log(`👤 ${userChoice} VS 🤖 ${computerChoice}`);
+  const userEmoji = getChoiceEmoji(userChoice);
+  const computerEmoji = getChoiceEmoji(computerChoice);
+  gameChoices.textContent = `${userEmoji} VS ${computerEmoji}`;
+  gameResults.textContent = `${winner} won`;
 
   return winner;
 }
-
-// function playGame(rounds) {
-//   rounds = parseInt(rounds);
-//   let userScore = 0;
-//   let computerScore = 0;
-
-//   console.log('New game starts, good luck');
-
-//   for (let currentRounds = 0; currentRounds < rounds; currentRounds++) {
-//     let winner = startRound();
-
-//     if (winner == 'user') {
-//       userScore++;
-//     } else if (winner == 'computer') {
-//       computerScore++;
-//     }
-
-//     console.log(`👤 user:${userScore} | 🤖 computer:${computerScore}`);
-//   }
-
-//   if (userScore == computerScore) {
-//     console.log('Game finished, it was a Draw');
-//   } else if (userScore > computerScore) {
-//     console.log('Game finished, user wins!');
-//   } else {
-//     console.log('Game finished, computer wins!');
-//   }
-// }
