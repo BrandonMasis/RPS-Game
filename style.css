@@ -1,9 +1,42 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
 }
 
-body{
+#mainScreen {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
     background-color: rgb(30, 30, 30);
+    color: white;
+    text-align: center;
+}
+
+.elementContainer {
+    display: flex;
+    gap: 1rem;
+}
+
+.element {
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: rgb(50, 50, 50);
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.element:hover {
+    background-color: rgb(70, 70, 70);
+}
+
+#results, #scores {
+    font-size: 1.5rem;
 }

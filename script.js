@@ -1,4 +1,10 @@
+const gameResults = document.querySelector('#results');
+const elementBtns = document.querySelectorAll('.element');
+const gameScores = document.querySelector('#scores');
+
 let availableChoices = ['rock', 'paper', 'scissors'];
+
+// When you click a button, it reads what element you choose, and decidesWInner(a,b)
 
 function getUserChoice() {
   let userChoice = prompt(
@@ -47,35 +53,30 @@ function startRound() {
   return winner;
 }
 
-function playGame(rounds) {
-  rounds = parseInt(rounds);
-  let userScore = 0;
-  let computerScore = 0;
+// function playGame(rounds) {
+//   rounds = parseInt(rounds);
+//   let userScore = 0;
+//   let computerScore = 0;
 
-  console.log('New game starts, good luck');
+//   console.log('New game starts, good luck');
 
-  for (let currentRounds = 0; currentRounds < rounds; currentRounds++) {
-    let winner = startRound();
+//   for (let currentRounds = 0; currentRounds < rounds; currentRounds++) {
+//     let winner = startRound();
 
-    if (winner == 'user') {
-      userScore++;
-    } else if (winner == 'computer') {
-      computerScore++;
-    }
+//     if (winner == 'user') {
+//       userScore++;
+//     } else if (winner == 'computer') {
+//       computerScore++;
+//     }
 
-    console.log(`👤 user:${userScore} | 🤖 computer:${computerScore}`);
-  }
+//     console.log(`👤 user:${userScore} | 🤖 computer:${computerScore}`);
+//   }
 
-  if (userScore == computerScore) {
-    console.log('Game finished, it was a Draw');
-  } else if (userScore > computerScore) {
-    console.log('Game finished, user wins!');
-  } else {
-    console.log('Game finished, computer wins!');
-  }
-}
-//Play game
-// count=0
-// start rounds till counter reaches 5
-// check player and machine scores, and say who won.
-// restart the counters to 0
+//   if (userScore == computerScore) {
+//     console.log('Game finished, it was a Draw');
+//   } else if (userScore > computerScore) {
+//     console.log('Game finished, user wins!');
+//   } else {
+//     console.log('Game finished, computer wins!');
+//   }
+// }

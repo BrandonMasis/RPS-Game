@@ -5,13 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0">
-    <title>Rock, paper, scissors.</title>
+    <title>Rock, Paper, Scissors</title>
     <link rel="stylesheet" href="style.css">
     <script src="./script.js" defer></script>
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com"
+        crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-
+    <section id="mainScreen">
+        <h2 id="results">You won!</h2>
+        <div class="elementContainer">
+            <button class="element"
+                data-element="rock">🪨</button>
+            <button class="element"
+                data-element="paper">📄</button>
+            <button class="element"
+                data-element="scissors">✂️</button>
+        </div>
+        <h2 id="scores">Player: 1 | Computer: 2</h2>
+    </section>
 </body>
 
 </html>
