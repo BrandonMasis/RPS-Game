@@ -40,3 +40,7 @@
 #results, #scores {
     font-size: 1.5rem;
 }
+
+.endgame{
+    background: linear-gradient(135deg, #FF5F6D 0%, #FFC371 50%, #FFD700 100%);
+}

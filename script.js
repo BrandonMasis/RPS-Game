@@ -61,12 +61,12 @@ function updateScores(winner) {
 function checkScores() {
   if (userScore == 5) {
     gameResults.textContent = `User wins the game!`;
-
+    endGame();
     userScore = 0;
     computerScore = 0;
   } else if (computerScore == 5) {
     gameResults.textContent = `Computer wins the game!`;
-
+    endGame();
     userScore = 0;
     computerScore = 0;
   }
@@ -83,8 +83,31 @@ function playRound(userChoice) {
   if (winner == 'draw') {
     gameResults.textContent = `${winner}`;
   } else {
-    gameResults.textContent = `${winner} won`;
+    gameResults.textContent = `${winner} wins`;
   }
 
   updateScores(winner);
+}
+
+function endGame() {
+  gameScores.textContent = ``;
+  gameChoices.textContent = ``;
+
+  elementBtns.forEach((btn) => {
+    let originalEmoji = btn.textContent;
+    btn.textContent = '🎉';
+    btn.classList.toggle('endgame');
+    btn.removeEventListener('click', elementClick);
+
+    setTimeout(() => {
+      gameResults.textContent = `Rock Paper Scissors`;
+      restoreGame(btn, originalEmoji);
+    }, 5000); // 5000 milliseconds = 5 seconds
+  });
+}
+
+function restoreGame(btn, originalEmoji) {
+  btn.textContent = originalEmoji;
+  btn.classList.toggle('endgame');
+  btn.addEventListener('click', elementClick);
 }
